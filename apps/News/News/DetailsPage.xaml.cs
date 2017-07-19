@@ -41,7 +41,7 @@ namespace News
         private bool relatedsectionFirstTime = true;
         DispatcherTimer videoControlsTimer;
 
-        bool IsFullscreen = false;
+        //bool IsFullscreen = false;
 
         List<AnimatableSection> animatableSections = new List<AnimatableSection>();
 
