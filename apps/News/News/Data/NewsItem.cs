@@ -9,7 +9,7 @@ namespace News.Data
     public class NewsItem
     {
         private static string lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam imperdiet iaculis porta. Morbi tortor sem, lobortis sed vulputate vitae, pulvinar at tortor. Vestibulum faucibus consectetur augue, sit amet congue ante commodo vitae. ";
-        private static string imageHome = "http://adx.azureedge.net/Images/Watermark";
+        private static string imageHome = "http://adx.azureedge.net/Images/Clean";
         public string Title { get; set; }
         public string Summary { get; set; } = lorem;
         public string Author { get; set; } = "JILL SMITH";
