@@ -76,7 +76,7 @@ namespace News
             this.InitializeComponent();
         }
 
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        private async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             if (App.IsXbox() && _firstRun)
             {
@@ -91,7 +91,7 @@ namespace News
             }
             else
             {
-                RootPage.Current.UpdateBackground(Items.First().HeroImage, 0);
+                await RootPage.Current.UpdateBackground(Items.First().HeroImage, 0);
             }
 
             if (App.IsXbox())
@@ -158,10 +158,10 @@ namespace News
             shadow.Mask = maskBrush.Mask;
         }
 
-        private void TimelineItem_HeaderGotFocus(object sender, EventArgs e)
+        private async void TimelineItem_HeaderGotFocus(object sender, EventArgs e)
         {
             var item = sender as TimelineItem;
-            RootPage.Current.UpdateBackground(Hero.HeroImage, Timeline.TimelinePanel.TopItemIndex);
+            await RootPage.Current.UpdateBackground(Hero.HeroImage, Timeline.TimelinePanel.TopItemIndex);
 
             HeaderDate.Fade(1).Start();
             HeaderTime.Fade(1).Start();
@@ -185,7 +185,7 @@ namespace News
             WeatherIcon.Offset().Start();
         }
 
-        private void TimelineItem_ItemGotFocus(object sender, EventArgs e)
+        private async void TimelineItem_ItemGotFocus(object sender, EventArgs e)
         {
             var item = sender as TimelineItem;
             var stories = item.FindChildren<TimelineStory>();
@@ -196,7 +196,7 @@ namespace News
             var storie = stories.First();
             storie.AnimateFocus();
 
-            RootPage.Current.UpdateBackground(storie.Item.HeroImage, Timeline.TimelinePanel.TopItemIndex);
+            await RootPage.Current.UpdateBackground(storie.Item.HeroImage, Timeline.TimelinePanel.TopItemIndex);
         }
 
         private void TimelineItem_ItemLostFocus(object sender, EventArgs e)
@@ -262,7 +262,7 @@ namespace News
             previousFocus = e.OriginalSource as ListViewItem;
         }
 
-        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        private async void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var index = Items.IndexOf(e.ClickedItem as NewsItem);
             var children = (sender as ListView).FindChildren<ListViewItem>();
@@ -280,7 +280,7 @@ namespace News
 
             var story = e.ClickedItem as NewsItem;
 
-            RootPage.Current.UpdateBackground(story.HeroImage, 0);
+            await RootPage.Current.UpdateBackground(story.HeroImage, 0);
             Frame.Navigate(typeof(DetailsPage), story);
 
         }
